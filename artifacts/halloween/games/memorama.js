@@ -43,8 +43,6 @@ export function mount(container, { onWin }) {
   let locked = false;
   let matchedPairs = 0;
   let finished = false;
-  let resolveTimer;
-
   function flip(card, isUp) {
     card.button.classList.toggle('is-flipped', isUp);
     card.button.setAttribute(
@@ -73,18 +71,17 @@ export function mount(container, { onWin }) {
 
       if (matchedPairs === SYMBOLS.length) {
         finished = true;
-        resolveTimer = window.setTimeout(onWin, 500);
+        window.setTimeout(onWin, 500);
       }
       return;
     }
 
     locked = true;
-    resolveTimer = window.setTimeout(() => {
+    window.setTimeout(() => {
       flip(first, false);
       flip(second, false);
       revealed = [];
       locked = false;
-      resolveTimer = undefined;
     }, 700);
   }
 

@@ -41,7 +41,7 @@ export function mount(container, { onWin }) {
   let activeHole = -1;
   let ending = false;
   let locked = false;
-  let timers = new Set();
+  const timers = new Set();
 
   function schedule(callback, delay) {
     const timer = window.setTimeout(() => {
@@ -73,12 +73,8 @@ export function mount(container, { onWin }) {
 
   function showGhost() {
     if (ending) return;
-    let nextHole = Math.floor(Math.random() * HOLE_COUNT);
-    if (HOLE_COUNT > 1) {
-      while (nextHole === previousHole) {
-        nextHole = Math.floor(Math.random() * HOLE_COUNT);
-      }
-    }
+    let nextHole = Math.floor(Math.random() * (previousHole < 0 ? HOLE_COUNT : HOLE_COUNT - 1));
+    if (previousHole >= 0 && nextHole >= previousHole) nextHole += 1;
     previousHole = nextHole;
     activeHole = nextHole;
 

@@ -28,16 +28,10 @@ export function mount(container, { onWin, onFail }) {
   let previousPosition = -1;
   let locked = false;
   let finished = false;
-  let nextRoundTimer;
-  let wrongChoiceTimer;
-
   function randomPosition(size) {
-    let position = Math.floor(Math.random() * size);
-    if (size > 1) {
-      while (position === previousPosition) {
-        position = Math.floor(Math.random() * size);
-      }
-    }
+    const hasPrevious = previousPosition >= 0 && previousPosition < size;
+    let position = Math.floor(Math.random() * (hasPrevious ? size - 1 : size));
+    if (hasPrevious && position >= previousPosition) position += 1;
     previousPosition = position;
     return position;
   }
@@ -68,10 +62,10 @@ export function mount(container, { onWin, onFail }) {
           button.classList.add('is-correct');
           if (roundIndex === ROUNDS.length - 1) {
             finished = true;
-            nextRoundTimer = window.setTimeout(onWin, 250);
+            window.setTimeout(onWin, 250);
             return;
           }
-          nextRoundTimer = window.setTimeout(() => {
+          window.setTimeout(() => {
             roundIndex += 1;
             renderRound();
           }, 260);
@@ -81,7 +75,7 @@ export function mount(container, { onWin, onFail }) {
         locked = true;
         onFail();
         button.classList.add('is-wrong');
-        wrongChoiceTimer = window.setTimeout(() => {
+        window.setTimeout(() => {
           button.classList.remove('is-wrong');
           renderRound();
         }, 360);
