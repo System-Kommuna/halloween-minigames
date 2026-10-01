@@ -5,9 +5,12 @@ export const ALLOWED_PARENT_ORIGINS = [
 ].map((url) => new URL(url).origin);
 
 import { mount as mountPrueba } from './games/prueba.js';
+import { mount as mountMemorama } from './games/memorama.js';
+import { mount as mountFantasma } from './games/fantasma.js';
+import { mount as mountIntruso } from './games/intruso.js';
 
-// Agrega aquí los mount de los siguientes juegos.
-const games = [mountPrueba];
+// Cada partida selecciona un solo juego al azar al cargar.
+const games = [mountMemorama, mountFantasma, mountIntruso, mountPrueba];
 
 function resolveParentOrigin() {
   if (window.parent === window) return null;

@@ -29,6 +29,28 @@ h2{font-size:1.5rem;color:var(--orange)}
 font:700 1.1rem system-ui,sans-serif;color:#1a0b2e;background:linear-gradient(180deg,#ffa238,var(--orange));box-shadow:0 5px 0 #a34c00,0 10px 20px rgba(255,122,0,.3);transition:transform .15s}
 .win-button:active{transform:translateY(3px);box-shadow:0 2px 0 #a34c00}
 .win-button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.mini-game{width:100%;min-width:0}
+.mini-game-title{margin:0 0 8px;font-size:clamp(1.3rem,6vw,1.65rem);line-height:1.15}
+.memory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:min(100%,300px);margin:0 auto;perspective:800px}
+.memory-card{aspect-ratio:1;min-width:0;min-height:48px;padding:0;border:0;background:transparent;cursor:pointer;touch-action:manipulation;perspective:700px}
+.memory-card-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .42s cubic-bezier(.2,.72,.25,1)}
+.memory-card.is-flipped .memory-card-inner,.memory-card.is-matched .memory-card-inner{transform:rotateY(180deg)}
+.memory-card-back,.memory-card-front{position:absolute;inset:0;display:grid;place-items:center;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.memory-card-back{border:1px solid rgba(255,160,65,.8);background:linear-gradient(145deg,#55277c,#27103f);font-size:clamp(1rem,6vw,1.5rem);box-shadow:inset 0 0 12px rgba(255,122,0,.14)}
+.memory-card-front{transform:rotateY(180deg);border:2px solid rgba(255,122,0,.65);background:linear-gradient(145deg,#fff2dc,#f4d6af);font-size:clamp(1.7rem,10vw,2.4rem);box-shadow:0 3px 9px rgba(0,0,0,.24)}
+.memory-card.is-matched .memory-card-front{border-color:#ffad55;box-shadow:0 0 14px rgba(255,122,0,.4)}
+.memory-card:focus-visible,.ghost-hole:focus-visible,.intruder-tile:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.ghost-score,.intruder-round{margin:0 0 9px;color:#ffe1bb;font-weight:700}
+.ghost-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:min(100%,264px);margin:0 auto}
+.ghost-hole{position:relative;display:grid;place-items:center;aspect-ratio:1;min-width:48px;min-height:48px;padding:0;border:2px solid rgba(255,122,0,.3);border-radius:50% 50% 44% 44%;background:radial-gradient(ellipse at 50% 48%,#090510 0 45%,#28143c 70%,#3a2052 100%);box-shadow:inset 0 5px 12px rgba(0,0,0,.85),0 4px 0 #160a25;cursor:pointer;touch-action:manipulation;font-size:clamp(2rem,10vw,2.8rem);line-height:1}
+.ghost-hole.has-ghost{animation:ghost-emerge .22s ease-out both}
+.ghost-hole.ghost-caught{animation:ghost-caught .18s ease-in both}
+.ghost-hole.ghost-leaving{animation:ghost-caught .18s ease-in both}
+.intruder-grid{display:grid;grid-template-columns:repeat(var(--intruder-columns,3),minmax(0,1fr));gap:6px;width:min(100%,292px);margin:0 auto}
+.intruder-tile{display:grid;place-items:center;aspect-ratio:1;min-width:48px;min-height:48px;padding:0;border:1px solid rgba(255,122,0,.38);border-radius:11px;background:linear-gradient(145deg,rgba(79,42,104,.96),rgba(28,12,46,.97));box-shadow:0 3px 0 rgba(0,0,0,.3);cursor:pointer;touch-action:manipulation;font-size:clamp(1.35rem,7vw,2rem);transition:transform .2s,background .2s,border-color .2s}
+.intruder-tile:active{transform:scale(.94)}
+.intruder-tile.is-correct{background:rgba(255,122,0,.28);border-color:#ffb263;transform:scale(1.08)}
+.intruder-tile.is-wrong{animation:intruder-shake .34s ease-in-out;border-color:#ff7a00;background:rgba(255,45,45,.2)}
 #win-overlay{position:absolute;inset:0;z-index:5;display:grid;place-items:center;border-radius:20px;background:rgba(10,3,20,.94);animation:pop .4s ease-out}
 .win-text{font-family:"Creepster",cursive;font-size:clamp(2rem,10vw,2.8rem);color:var(--orange);margin:0;padding:0 12px;animation:bob 2.4s ease-in-out infinite}
 #delivery-status{margin:12px 16px 0;font-size:.9rem;color:var(--muted)}
@@ -39,5 +61,8 @@ font:700 1.1rem system-ui,sans-serif;color:#1a0b2e;background:linear-gradient(18
 @keyframes drift{to{transform:translateX(6%)}}
 @keyframes pop{from{opacity:0;transform:scale(.94)}}
 @keyframes bob{50%{transform:translateY(-6px) rotate(-1deg)}}
-@media (max-width:360px){.card{padding:16px 12px}}
+@keyframes ghost-emerge{from{opacity:0;transform:translateY(9px) scale(.72)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ghost-caught{to{opacity:0;transform:scale(.45) rotate(12deg)}}
+@keyframes intruder-shake{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+@media (max-width:360px){.card{padding:16px 12px}.memory-grid{gap:6px}.ghost-grid{gap:7px}.intruder-grid{gap:5px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.bat{display:none}}

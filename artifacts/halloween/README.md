@@ -12,7 +12,7 @@ Los sitios autorizados se editan arriba de `main.js`. Sus URLs se normalizan a o
 
 ## Juegos
 
-Cada juego exporta `mount(container, { onWin, onFail })`. Importa su `mount` en `main.js` y agrégalo al arreglo `games`. Se selecciona uno al azar por carga. La prueba actual solo tiene el botón “Ganar”; no simula fallos.
+Cada juego exporta `mount(container, { onWin, onFail })`. El shell selecciona un juego al azar al cargar. Ya están registrados el memorama, atrapa fantasmas, encuentra al intruso y el botón temporal “Ganar”. La prueba temporal no simula fallos; memorama y fantasma tampoco llaman a `onFail`.
 
 Todo el estado vive en memoria: recargar reinicia la partida. `onWin` muestra el overlay y después de 1200 ms envía un único mensaje al padre autorizado. `onFail` muestra “Sigue intentando 👻” durante 1500 ms; el juego gestiona su continuación.
 
