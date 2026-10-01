@@ -1,6 +1,16 @@
-# [Project name]
+# Prueba Halloween
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+App estática de Halloween para un iframe dentro de un popup de OXXOGAS.
+
+## App Halloween
+
+- Archivos entregables: `artifacts/halloween/index.html`, `styles.css`, `main.js` y `games/`.
+- HTML, CSS y módulos ES vanilla; sin frameworks ni paso de compilación.
+- Vista previa: `pnpm --filter @workspace/halloween run dev`.
+- Producción sirve los archivos estáticos directamente.
+- No usar cookies ni localStorage; cada recarga empieza desde cero.
+- Instrucciones de integración y registro de juegos: `artifacts/halloween/README.md`.
+- Los paquetes React del scaffold no se cargan en esta app.
 
 ## Run & Operate
 

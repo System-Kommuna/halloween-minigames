@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Prueba Halloween"
+description = "Minijuegos Halloween para iframe, en HTML, CSS y JavaScript vanilla sin build step."
+version = "1.0.0"
+id = "artifacts/halloween"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21069
+
+[services.development]
+run = "pnpm --filter @workspace/halloween run dev"
+
+[services.production]
+serve = "static"
+publicDir = "artifacts/halloween"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21069"
+BASE_PATH = "/"

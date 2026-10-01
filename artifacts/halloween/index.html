@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prueba Halloween · OXXOGAS</title>
+<meta name="description" content="Una prueba de Halloween rápida e interactiva para OXXOGAS.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <div class="moon"></div>
+  <span class="bat b1">🦇</span><span class="bat b2">🦇</span>
+  <span class="star s1">✦</span><span class="star s2">✦</span><span class="star s3">✦</span>
+  <div class="hills"><span>🌲</span><span>🏚️</span><span>🌲</span><span>🪦</span><span>🌲</span></div>
+  <div class="mist"></div>
+</div>
+<main class="card">
+  <p class="badge">🎃 OXXOGAS · Noche de brujas</p>
+  <h1>La Prueba <span>del Terror</span></h1>
+  <p class="lead">Un reto rápido te espera en la oscuridad. ¿Te atreves? 👻</p>
+  <section class="test-game" aria-labelledby="tg-title">
+    <h2 id="tg-title">Prueba temporal 🕯️</h2>
+    <p class="test-game-description">Juego temporal de práctica: toca el botón para superar la prueba.</p>
+    <div id="game-container"></div>
+  </section>
+  <div id="win-overlay" role="status" hidden>
+    <div class="win-box">
+      <p class="win-text">¡Pasaste la prueba! 🎃</p>
+      <p id="delivery-status" hidden></p>
+    </div>
+  </div>
+  <p id="fail-message" role="status" hidden>Sigue intentando 👻</p>
+</main>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
