@@ -7,7 +7,6 @@ const assets = {
   '/index.html': ['index.html', 'text/html; charset=utf-8'],
   '/styles.css': ['styles.css', 'text/css; charset=utf-8'],
   '/main.js': ['main.js', 'text/javascript; charset=utf-8'],
-  '/games/prueba.js': ['games/prueba.js', 'text/javascript; charset=utf-8'],
   '/games/memorama.js': ['games/memorama.js', 'text/javascript; charset=utf-8'],
   '/games/fantasma.js': ['games/fantasma.js', 'text/javascript; charset=utf-8'],
   '/games/intruso.js': ['games/intruso.js', 'text/javascript; charset=utf-8'],

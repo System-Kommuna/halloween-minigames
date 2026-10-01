@@ -12,7 +12,7 @@ Los sitios autorizados se editan arriba de `main.js`. Sus URLs se normalizan a o
 
 ## Juegos
 
-Cada juego exporta `mount(container, { onWin, onFail })`. El shell selecciona al azar entre memorama, atrapa fantasmas y encuentra al intruso. El archivo `games/prueba.js` conserva el botón temporal “Ganar”, pero no está en la selección normal. Memorama y fantasma nunca llaman a `onFail`.
+Cada juego exporta `mount(container, { onWin, onFail })`. En cada carga, el shell selecciona un juego al azar entre memorama, atrapa fantasmas y encuentra al intruso. Memorama y fantasma nunca llaman a `onFail`.
 
 - **Memorama:** cuatro parejas, cartas volteadas con CSS, sin límite de intentos.
 - **Fantasma:** cinco capturas, con fantasmas visibles 1200 ms y sin penalizaciones.

@@ -10,7 +10,6 @@ import { mount as mountIntruso } from './games/intruso.js';
 
 // Cada partida selecciona un solo juego al azar al cargar.
 const games = [mountMemorama, mountFantasma, mountIntruso];
-// games/prueba.js sigue disponible para validar la integración manualmente.
 
 function resolveParentOrigin() {
   if (window.parent === window) return null;
